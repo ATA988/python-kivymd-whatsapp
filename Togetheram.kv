@@ -1,0 +1,2120 @@
+<Togetheram>:
+    Screen:
+        name: "main"
+        canvas.before:
+            Color:
+                rgba: 255, 255, 255, 255  # رنگ پس‌زمینه به سبز تنظیم شود
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FloatLayout:
+            MDCard:
+                pos_hint: {"top": .98}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .2
+            MDTopAppBar:
+                id: toolbar
+                title: "Togetheram"
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['camera-outline', lambda x: root.camera(root)], ['magnify', lambda x: x], ['dots-vertical', lambda x: x]]
+            MDTabs:
+                pos_hint: {"top": .905}
+                background_color: rgba(46, 130,255, 255)
+                Tab:
+                    icon: "account-group"
+                    text_color: 1, 0, 1, 1
+                    Screen:
+                        name: "tab1_screen"
+                        Image:
+                            source: "assets/bg.png"
+                            pos_hint: {"center_x": .5, "center_y": .75}
+                            size_hint: None, None
+                            size: root.width * 0.5, root.height * 0.5
+                        MDLabel:
+                            text: "Stay connected with a community"
+                            font_style: "H3"
+                            font_size: 25
+                            pos_hint: {"center_x": .8, "center_y": .52}
+                            height: self.texture_size[1]
+                        MDLabel:
+                            text: "Communities bring members together in"
+                            pos_hint: {"center_x": .816, "center_y": .46}
+                            font_size: 18   
+                            opacity: .7
+                            height: self.texture_size[1]
+                         
+                        MDLabel:
+                            text:"topic-based groups, and make it easy to get admin"
+                            pos_hint: {"center_x": .781, "center_y": .43}
+                            font_size: 18    
+                            opacity: .7
+                            height: self.texture_size[1]
+                        MDLabel:
+                            text:"announcements. Any community you're added to will"
+                            pos_hint: {"center_x": .771, "center_y": .4}
+                            font_size: 18     
+                            opacity: .7
+                            height: self.texture_size[1]
+                        MDLabel:
+                            text:"appear here."
+                            pos_hint: {"center_x": .93, "center_y": .37}
+                            font_size: 18    
+                            opacity: .7
+                            height: self.texture_size[1]    
+                        MDFillRoundFlatButton:
+                            text: "See example communities >"
+                            md_bg_color: rgba(255, 255, 255, 255)
+                            theme_text_color: "Custom"
+                            text_color: rgba(46, 130,255, 255)
+                            pos_hint: {"center_x": .5, "center_y": .3}
+                            on_release: root.dlog()
+                        MDFillRoundFlatButton:
+                            text: "Start your community"
+                            md_bg_color: rgba(46, 130,255, 255)
+                            theme_text_color: "Custom"
+                            text_color: rgba(255, 255, 255, 255)
+                            pos_hint: {"center_x": .5, "center_y": .22}
+                            size_hint: .7, .02
+                            on_release: root.bg(root)
+                        
+                        
+                Tab:
+                    title: "Chats"
+                    text_color: 1, 0, 1, 1
+                    Screen:
+                        name: "tab2_screen"
+                        MDBoxLayout:
+                            MDScrollView:
+                                pos_hint: {"center_x": 0, "center_y": .45}
+                                MDSelectionList:
+                                    id: selection_list
+                                    spacing: "2dp"
+                                    on_selected: root.on_selected(*args)
+                                    on_unselected: root.on_unselected(*args)
+                                    on_selected_mode: root.set_selection_mode(*args)
+                                    TwoLineAvatarListItem:
+                                        text: "  Togetheram"
+                                        divider:None
+                                        ImageLeftWidget:
+                                            source: "assets/ats2.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                    TwoLineAvatarListItem:
+                                        text: "  Dad"
+                                        
+                                        divider:None
+                                        on_release: root.chat(root)
+                                        ImageLeftWidget:
+                                            source: "assets/d2.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                    TwoLineAvatarListItem:
+                                        text: "  Mom"
+                                        divider:None
+                                        
+                                        on_release: root.mom(root)
+                                        ImageLeftWidget:
+                                            source: "assets/m.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.mom(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Brother"
+                                        
+                                        divider:None
+                                        on_release: root.bro(root)
+                                        ImageLeftWidget:
+                                            source: "assets/m.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.bro(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Amane"
+                                        
+                                        divider:None
+                                        on_release: root.am(root)
+                                        ImageLeftWidget:
+                                            source: "assets/ma.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.am(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Zahra"
+                                        
+                                        divider:None
+                                        on_release: root.za(root)
+                                        ImageLeftWidget:
+                                            source: "assets/za.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.za(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Saeid"
+                                        
+                                        divider:None
+                                        on_release: root.su(root)
+                                        ImageLeftWidget:
+                                            source: "assets/su.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.su(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Dad2"
+                                        
+                                        divider:None
+                                        on_release: root.d2(root)
+                                        ImageLeftWidget:
+                                            source: "assets/d2.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.d2(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Zahra"
+                                        
+                                        divider:None
+                                        on_release: root.za2(root)
+                                        ImageLeftWidget:
+                                            source: "assets/za2.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.za2(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Maryam"
+                                        
+                                        divider:None
+                                        on_release: root.ma(root)
+                                        ImageLeftWidget:
+                                            source: "assets/ma.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.ma(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Sareye"
+                                        
+                                        divider:None
+                                        on_release: root.sa(root)
+                                        ImageLeftWidget:
+                                            source: "assets/sa.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.sa(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Rogaye"
+                                        
+                                        divider:None
+                                        on_release: root.ra(root)
+                                        ImageLeftWidget:
+                                            source: "assets/ra.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.ra(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Hasti"
+                                        
+                                        divider:None
+                                        on_release: root.hc(root)
+                                        ImageLeftWidget:
+                                            source: "assets/mc.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                            on_release: root.hc(root)
+                                    TwoLineAvatarListItem:
+                                        text: "  Mahya"
+                                        
+                                        divider:None
+                                        on_release: root.mc(root)
+                                        ImageLeftWidget:
+                                            source: "assets/mc.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                    TwoLineAvatarListItem:
+                                        text: "  Maede"
+                                        
+                                        divider:None
+                                        on_release: root.mc2(root)
+                                        ImageLeftWidget:
+                                            source: "assets/mc2.png"
+                                            size_hint: None,None
+                                            size: dp(45), dp(45)
+                                            radius:[100]
+                                            pos_hint: {"center_y": .5}
+                                    ThreeLineAvatarListItem:
+                                        text: ""
+                                        divider:None
+                                    ThreeLineAvatarListItem:
+                                        text: ""
+                                        divider:None
+                                    ThreeLineAvatarListItem:
+                                        text: ""
+                                        divider:None
+                                            
+                        MDFabBottomAppBarButton:
+                            icon: "message-reply-text-outline"
+                            pos_hint: {"center_x": .85, "center_y": .17}
+                            theme_icon_color: "Custom"
+                            icon_color: 1, 1, 1, 1
+                            md_bg_color: rgba(46, 130,255, 255)
+                            on_release: root.select(root)
+
+
+                Tab:
+                    title: "Updates"
+                    text_color: 1, 0, 1, 1
+                    Screen:
+                        name: "tab3_screen"
+                        MDBoxLayout:
+                            pos_hint: {"center_x": .5, "center_y": 1.23}
+                            MDList:
+                                id: list_item
+                                TwoLineAvatarIconListItem:
+                                    id: my_item
+                                    text: "  My status"
+                                    secondary_text: '  Top to add status update'
+                                    ImageLeftWidget:
+                                        source: "assets/account.png"
+                                        size_hint: None,None
+                                        size: dp(45), dp(45)
+                                        radius:[100]
+                                        pos_hint: {"center_y": .5}
+                                    
+                        # MDLabel:
+                        #     text: "view status"
+                        #     opacity: .7
+                        #     pos_hint: {"center_x": .6, "center_y": .7}
+
+                        MDLabel:
+                            text: "Status"
+                            pos_hint: {"center_x": .55, "center_y": .9}
+                            text_color: 1, 1, 1, 1
+                            font_style: "H6"
+                        MDLabel:
+                            text: "Channels"
+                            pos_hint: {"center_x": .55, "center_y": .675}
+                            text_color: 1, 1, 1, 1
+                            font_style: "H6"
+                        MDLabel:
+                            text: "Stay updated on topics that matter to you. Top on"
+                            pos_hint: {"center_x": .55, "center_y": .623}
+                            text_color: 1, 1, 1, 1
+                            font_style: "Body2"
+                            opacity: .56 
+                        MDLabel:
+                            text: "the + to create your channels"
+                            pos_hint: {"center_x": .55, "center_y": .593}
+                            text_color: 1, 1, 1, 1
+                            font_style: "Body2"
+                            opacity: .56
+                        MDFillRoundFlatButton:
+                            text: "Explore more"
+                            md_bg_color:  rgba(46, 130,255, 255)
+                            text_color: 1, 1, 1, 1
+                            theme_text_color: "Custom"
+                            pos_hint: {"center_x": .2, "center_y": .52}
+                        MDIconButton:
+                            icon: "dots-vertical"
+                            pos_hint: {"center_x": .91, "center_y": .9}
+                            icon_color: 1, 1, 1, 1
+                        MDIconButton:
+                            icon: "plus"
+                            pos_hint: {"center_x": .91, "center_y": .675}
+                            icon_color: 1, 1, 1, 1
+                                        
+                        MDFabBottomAppBarButton:
+                            icon: "camera"
+                            pos_hint: {"center_x": .85, "center_y": .17}
+                            theme_icon_color: "Custom"
+                            icon_color: 1, 1, 1, 1
+                            md_bg_color: rgba(46, 130,255, 255)
+                            on_release: root.camera(root)
+                        MDFabBottomAppBarButton:
+                            icon: "pencil"
+                            pos_hint: {"center_x": .85, "center_y": .27}
+                            theme_icon_color: "Custom"
+                            icon_color: rgba(46, 130,255, 255)
+                            size_hint: .12, .063
+                            md_bg_color: rgba(190, 217,255, 255)
+                            on_release: root.textinput(root)
+
+                Tab:
+                    title: "Calls"
+                    text_color: 1, 0, 1, 1
+                    Screen:
+                        name: "tab4_screen"
+                        MDBoxLayout:
+                            pos_hint: {"center_x": .5, "center_y": 1.29}
+                            MDList:
+                                TwoLineAvatarListItem:
+                                    text: "  Create call link"
+                                    secondary_text: "  share a link for your ampsapp call"
+                                    divider: None
+                                    ImageLeftWidget:
+                                        source: "assets/link.png"
+                                        size_hint: None,None
+                                        size: dp(45), dp(45)
+                                        radius: [100]
+                        MDLabel:
+                            text: 'Recent'
+                            pos_hint: {'center_x': .55, 'center_y': .765}
+                            font_style: "Subtitle1"
+                            font_size: 25
+                        MDFabBottomAppBarButton:
+                            icon: "phone-plus"
+                            pos_hint: {"center_x": .85, "center_y": .17}
+                            theme_icon_color: "Custom"
+                            icon_color: 1, 1, 1, 1
+                            md_bg_color: rgba(46, 130,255, 255)
+                            on_release: root.contact(root)
+
+
+    MDScreen:
+        name: "select"
+        canvas.before:
+            Color:
+                rgba: 255, 255, 255, 255  # رنگ پس‌زمینه به سبز تنظیم شود
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .98}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                title: "Select contact"
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['magnify', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+
+            MDBoxLayout:
+                pos_hint: {"center_x": .5, "center_y": .96}
+                MDList:
+                    TwoLineIconListItem:
+                        text: 'New group'
+                        divider: None
+                        IconLeftWidget:
+                            icon: 'account-multiple'
+                            md_bg_color: rgba(46, 130, 255, 255)
+                            theme_icon_color: 'Custom'
+                            icon_color: 1, 1, 1, 1
+                    TwoLineAvatarIconListItem:
+                        text: 'New cantact'
+                        divider: None
+                        IconLeftWidget:
+                            icon: 'account-plus'
+                            md_bg_color: rgba(46, 130, 255, 255)
+                            theme_icon_color: 'Custom'
+                            icon_color: 1, 1, 1, 1
+                        IconRightWidget:
+                            icon: "qrcode"
+                            opacity: .6
+                    TwoLineIconListItem:
+                        text: 'New community'
+                        divider: None
+                        on_release: root.bg(root)
+                        IconLeftWidget:
+                            icon: 'account-group'
+                            md_bg_color: rgba(46, 130, 255, 255)
+                            theme_icon_color: 'Custom'
+                            icon_color: 1, 1, 1, 1
+                            on_release: root.bg(root)
+
+            MDLabel:
+                text: 'Contacts on Togetheram'
+                pos_hint: {'center_x': .55, 'center_y': .45}
+                opacity: .6
+                font_style: "Body2"
+
+            MDBoxLayout:
+                MDScrollView:
+                    pos_hint: {"center_x": 0, "center_y": -0.075}
+                    MDList:
+                        id: list_item
+                        TwoLineAvatarListItem:
+                            text: "  Dear ata(You)"
+                            secondary_text: "  Message yourself"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/account.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Dad"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/d2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Mom"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/m.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Brother"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/m.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Amane"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ma.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Zahra"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/za.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Saeed"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/su.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Zahra"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/za2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Dad2"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/d2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Maryam"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ma.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Sareye"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/sa.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Rogaye"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ra.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Hasti"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/mc.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Mahya"
+                            
+                            divider:None
+                            on_release: root.mc(root)
+                            ImageLeftWidget:
+                                source: "assets/mc.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Maede"
+                            
+                            divider:None
+                            on_release: root.mc2(root)
+                            ImageLeftWidget:
+                                source: "assets/mc2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Share invite link"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/share.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Contacts help"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ques.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+
+
+    MDScreen:
+        name: "textinput"
+        on_enter: app.root.change_background_color(self)
+        MDFloatLayout:
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                elevation: 0
+                right_action_items: [['assets/emoji.png', lambda x: x],['assets/text.png', lambda x: x], ['assets/pallete.png', lambda x: app.root.change_background_color(app.root.current_screen)]]
+                left_action_items: [['close', lambda x: root.main_scrn(root)]]
+                md_bg_color: rgba(1, 1, 1, 0.01)
+
+            TextInput:
+                hint_text: 'Type a status'
+                font_size: "30dp"
+                halign: "center"
+                pos_hint: {"center_x": .5, "center_y": .41}
+                background_color: 0, 0, 0, 0 
+                foreground_color: 1, 1, 1, 1
+                cursor_color: 1, 1, 1, 1
+                cursor_width: 2.7
+                
+            MDCard:
+                opacity: .32
+                md_bg_color: 0, 0, 0
+                size_hint: 1.5, .1
+                radius: [0]
+                pos_hint: {"center_x": .5, "center_y": .04}
+
+            MDIconButton:
+                icon: "assets/voice.png"
+                pos_hint: {"center_x": .9, "center_y": .044}
+                size_hint: .144, .072
+                md_bg_color: rgba(46, 130, 255, 255)
+            MDFillRoundFlatIconButton:
+                icon: "circle-double"
+                text: "Status(Contacts)"
+                pos_hint: {"center_x": .25, "center_y": .044}
+                md_bg_color: rgba(22, 30, 43, 255)
+                on_release: root.show_bottom_sheet()
+
+    MDScreen:
+        name: "contact"
+        canvas.before:
+            Color:
+                rgba: 255, 255, 255, 255  # رنگ پس‌زمینه به سبز تنظیم شود
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                radius: [30]
+                md_bg_color: rgba(241, 242, 246, 255)
+                size_hint: .98, .06
+                pos_hint: {"center_x": .5, "center_y": .96}
+            MDIconButton:
+                icon: "arrow-left"
+                pos_hint: {"center_x": .08, "center_y": .96}
+                theme_icon_color: "Custom"
+                icon_color: 0, 0, 0
+                on_release: root.main_scrn(root)
+            TextInput:
+                hint_text: "Search name or number..."
+                pos_hint: {"center_x": .53, "center_y": .96}
+                background_color: 0, 0, 0, 0
+                size_hint: .8, .045
+            MDBoxLayout:
+                pos_hint: {"center_x": .5, "center_y": 1.15}
+                MDList:
+                    TwoLineIconListItem:
+                        text: 'New call link'
+                        divider: None
+                        IconLeftWidget:
+                            icon: 'assets/link2.png'
+                            md_bg_color: rgba(46, 130, 255, 255)
+                            theme_icon_color: 'Custom'
+                            icon_color: 1, 1, 1, 1
+                    TwoLineAvatarIconListItem:
+                        text: 'New cantact'
+                        divider: None
+                        IconLeftWidget:
+                            icon: 'account-plus'
+                            md_bg_color: rgba(46, 130, 255, 255)
+                            theme_icon_color: 'Custom'
+                            icon_color: 1, 1, 1, 1
+                        IconRightWidget:
+                            icon: "qrcode"
+                            opacity: .6
+            MDLabel:
+                text: 'Contacts on Togetheram'
+                pos_hint: {'center_x': .54, 'center_y': .647}
+                opacity: .6
+                font_style: "Body2"
+            
+
+            MDBoxLayout:
+                MDScrollView:
+                    pos_hint: {"center_x": 0, "center_y": .11}
+                    MDList:
+                        id: list_item
+                        TwoLineAvatarListItem:
+                            text: "  Dear ata(You)"
+                            secondary_text: "  Message yourself"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/account.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Dad"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/d2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Mom"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/m.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Brother"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/m.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Amane"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ma.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Zahra"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/za.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Saeed"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/su.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Zahra"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/za2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Dad2"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/d2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Maryam"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ma.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Sareye"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/sa.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Rogaye"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/ra.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Hasti"
+                            divider:None
+                            ImageLeftWidget:
+                                source: "assets/mc.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Mahya"
+                            
+                            divider:None
+                            on_release: root.mc(root)
+                            ImageLeftWidget:
+                                source: "assets/mc.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        TwoLineAvatarListItem:
+                            text: "  Maede"
+                            
+                            divider:None
+                            on_release: root.mc2(root)
+                            ImageLeftWidget:
+                                source: "assets/mc2.png"
+                                size_hint: None,None
+                                size: dp(45), dp(45)
+                                radius:[100]
+                                pos_hint: {"center_y": .5}
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+                        ThreeLineAvatarListItem:
+                            text: ""
+                            divider:None
+
+    MDScreen:
+        name: "bg"
+        canvas.before:
+            Color:
+                rgba: 255, 255, 255, 255
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDTopAppBar:
+                left_action_items: [["close", lambda x: root.main_scrn(root)]]
+                md_bg_color: rgba(255, 255, 255, 255)
+                elevation: 0
+                pos_hint: {"top": 1}
+                specific_text_color: rgba(120, 120, 120, 255)
+            Image:
+                source: "assets/bg2.png"
+                pos_hint: {"center_x": .49, "center_y": .75}
+                size_hint: None, None
+                size: root.width * 0.55, root.height * 0.55
+            MDLabel:
+                text: "Create a new community"
+                font_style: "H3"
+                font_size: 25
+                pos_hint: {"center_x": .87, "center_y": .48}
+            MDLabel:
+                text: "Bring together a neighbouhood, school"
+                pos_hint: {"center_x": .86, "center_y": .43}
+                font_size: 18  
+                opacity: .7 
+                
+            MDLabel:
+                text:"or more, Create topic-based groups for"
+                pos_hint: {"center_x": .86, "center_y": .4}
+                font_size: 18   
+                opacity: .7 
+            MDLabel:
+                text:"members, and easily send them admin"
+                pos_hint: {"center_x": .86, "center_y": .37}
+                font_size: 18   
+                opacity: .7     
+            MDLabel:
+                text:"announcements."
+                pos_hint: {"center_x": .95, "center_y": .34}
+                font_size: 18    
+                opacity: .7     
+            MDFillRoundFlatButton:
+                text: "See example communities >"
+                md_bg_color: rgba(255, 255, 255, 255)
+                theme_text_color: "Custom"
+                text_color: rgba(46, 130,255, 255)
+                pos_hint: {"center_x": .51, "center_y": .27}
+            MDFillRoundFlatButton:
+                text: "Get started"
+                md_bg_color: rgba(46, 130,255, 255)
+                theme_text_color: "Custom"
+                text_color: rgba(255, 255, 255, 255)
+                pos_hint: {"center_x": .5, "center_y": .07}
+                size_hint: .9, .02
+
+    MDScreen:
+        name: "camera"
+        canvas.before:
+            Color:
+                rgba: 46, 130, 255, 255 
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            Image:
+                id: camera_view
+                size_hint: None, None
+                size: root.width, root.height
+                allow_stretch: True
+            MDIconButton:
+                icon:"assets/tak.png"
+                size_hint: (.3, .15)
+                icon_size: 100
+                pos_hint: {"center_x": .5, "center_y": .23}
+                on_release: root.take_photo()
+            MDIconButton:
+                icon: "sync"
+                icon_size: 35
+                size_hint: (.1, .05)
+                theme_icon_color: "Custom"
+                icon_color: rgba(255, 255, 255, 255)
+                pos_hint: {"center_x": .9, "center_y": .22}
+                md_bg_color: 0, 0, 0, 0.3
+            MDIconButton:
+                icon: "image"
+                icon_size: 35
+                size_hint: (.1, .05)
+                pos_hint: {"center_x": .1, "center_y": .22}
+                theme_icon_color: "Custom"
+                icon_color: rgba(255, 255, 255, 255)
+                md_bg_color: 0, 0, 0, 0.3
+            MDIconButton:
+                icon: "close"
+                icon_size: 30
+                size_hint: (.1, .05)
+                pos_hint: {"center_x": .1, "center_y": .9}
+                on_press: root.main_scrn(root)
+                theme_icon_color: "Custom"
+                icon_color: rgba(255, 255, 255, 255)
+            MDIconButton:
+                icon: "flash-off"
+                icon_size: 30
+                size_hint: (.1, .05)
+                pos_hint: {"center_x": .9, "center_y": .9}
+                theme_icon_color: "Custom"
+                icon_color: rgba(255, 255, 255, 255)
+            MDCard:
+                md_bg_color: rgba(23, 37, 57, 255)
+                pos_hint: {"center_x": .5, "center_y": .02}
+                radius: [40]
+                size_hint: 1, .25
+            
+            
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+    MDScreen:
+        name: "chats" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/d2.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+                on_text: app.change_icon(self.text)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .73, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Dad"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+                
+    MDScreen:
+        name: "Mom" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/m.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Mom"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+    
+    MDScreen:
+        name: "brother" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/m.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                on_focus: root.open_keyboard(self)
+                cursor_width: 2
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Brother"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+    MDScreen:
+        name: "am" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/ma.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Amane"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+    MDScreen:
+        name: "za" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/za.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Zahra"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+    MDScreen:
+        name: "su" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/su.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+                
+            MDLabel:
+                text: "Saeid"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+
+    MDScreen:
+        name: "d2" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/d2.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Dad2"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+    MDScreen:
+        name: "za2" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/za2.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+                
+            MDLabel:
+                text: "Zahra"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+
+    MDScreen:
+        name: "ma" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/ma.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Maryam"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+
+    MDScreen:
+        name: "sa" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/sa.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+                
+            MDLabel:
+                text: "Sareye"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+
+    MDScreen:
+        name: "ra" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/ra.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Rogaye"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+    MDScreen:
+        name: "hc" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/mc.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+                multiline: True
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .7, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+                
+            MDLabel:
+                text: "Hasti"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+    
+
+    MDScreen:
+        name: "mc" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/mc.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+                multiline: True
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .74, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Mahya"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+
+    MDScreen:
+        name: "mc2" 
+        canvas.before:
+            Color:
+                rgba: (225/255, 237/255, 255/255, 1)  # ترکیب متوسط رنگ آبی و صورتی
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MDFloatLayout:
+            MDCard:
+                pos_hint: {"top": .985}
+                radius: [0, 0, 30, 30]
+                md_bg_color: rgba(46, 130,255, 255)
+                size_hint: 1, .14
+            MDTopAppBar:
+                pos_hint: {"top": 1}
+                md_bg_color: rgba(46, 130,255, 255)
+                elevation: 0
+                right_action_items: [['video', lambda x: root.camera(root)], ['phone', lambda x: x], ['dots-vertical', lambda x: x]]
+                left_action_items: [['arrow-left', lambda x: root.main_scrn(root)]]
+            ImageLeftWidget:
+                source: "assets/mc2.png"
+                size_hint: None,None
+                size: dp(45), dp(45)
+                radius:[100]
+                pos_hint: {"right": .127, "center_y": .94}
+            
+
+            MDCard:
+                size_hint: .85, .1  
+                radius: [37]
+                pos_hint: {"center_x": .43, "center_y": .06}
+                md_bg_color: rgba(250, 250, 250, 255)
+                multiline: True
+            TextInput:
+                hint_text: "Type message..."
+                size_hint: .6, .07
+                multiline: True
+                pos_hint: {"center_x": .4, "center_y": .06}
+                hint_text_color: 0, 0, 0, 0.5
+                background_color: 0, 0, 0, 0
+                font_size: 25
+                cursor_color: rgba(46, 130, 255, 255)
+                cursor_width: 2
+                on_focus: root.open_keyboard(self)
+            MDIconButton:
+                icon: "attachment"
+                pos_hint: {"center_x": .74, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "assets/emoji2.png"
+                pos_hint: {"center_x": .05, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+            MDIconButton:
+                icon: "camera"
+                pos_hint: {"center_x": .8, "center_y": .057}
+                icon_size: 35
+                theme_icon_color: "Custom"
+                icon_color: rgba(160, 160, 160, 255)
+                
+            MDLabel:
+                text: "Maede"
+                pos_hint: {"center_x": .68, "center_y": .94}
+                text_color: 1, 1, 1, 1
+                theme_text_color: "Custom"
+                font_size: 25
+                font_style: "H6"
+            MDIconButton: 
+                icon: "assets/send.png"
+                pos_hint: {"center_x": .93, "center_y": .057}
+                md_bg_color: rgba(46, 130, 255, 255)
+                size_hint: (.08, .1)
+                theme_icon_color: "Custom"
+                icon_color: 1, 1, 1, 1
+############################################################################
+############################################################################
+############################################################################
+############################################################################
+############################################################################
